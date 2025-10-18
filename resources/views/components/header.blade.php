@@ -7,131 +7,189 @@
     <meta name="keywords" content="Male_Fashion, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Male-Fashion | Template</title>
+    <title>Edunix Erp</title>
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
-    rel="stylesheet">
 
-    <!-- Css Styles -->
-    <link rel="stylesheet" href="{{URL::asset('css/bootstrap.min.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{URL::asset('css/font-awesome.min.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{URL::asset('css/elegant-icons.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{URL::asset('css/magnific-popup.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{URL::asset('css/nice-select.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{URL::asset('css/owl.carousel.min.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{URL::asset('css/slicknav.min.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{URL::asset('css/style.css')}}" type="text/css">
 </head>
 
 <body>
     <!-- Page Preloder -->
-    <div id="preloder">
-        <div class="loader"></div>
-    </div>
 
-    <!-- Offcanvas Menu Begin -->
-    <div class="offcanvas-menu-overlay"></div>
-    <div class="offcanvas-menu-wrapper">
-        <div class="offcanvas__option">
-            <div class="offcanvas__links">
-                <a href="#">Sign in</a>
-                <a href="#">FAQs</a>
-            </div>
-            <div class="offcanvas__top__hover">
-                <span>Usd <i class="arrow_carrot-down"></i></span>
-                <ul>
-                    <li>USD</li>
-                    <li>EUR</li>
-                    <li>USD</li>
-                </ul>
-            </div>
-        </div>
-        <div class="offcanvas__nav__option">
-            <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
-            <a href="#"><img src="img/icon/heart.png" alt=""></a>
-            <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
-            <div class="price">$0.00</div>
-        </div>
-        <div id="mobile-menu-wrap"></div>
-        <div class="offcanvas__text">
-            <p>Free shipping, 30-day return or refund guarantee.</p>
-        </div>
-    </div>
-    <!-- Offcanvas Menu End -->
 
     <!-- Header Section Begin -->
-    <header class="header">
-        <div class="header__top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-md-7">
-                        <div class="header__top__left">
-                            <p>Free shipping, 30-day return or refund guarantee.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-5">
-                        <div class="header__top__right">
-                            <div class="header__top__links">
-                                <a href="#">Sign in</a>
-                                <a href="#">FAQs</a>
-                            </div>
-                            <div class="header__top__hover">
-                                <span>Usd <i class="arrow_carrot-down"></i></span>
-                                <ul>
-                                    <li>USD</li>
-                                    <li>EUR</li>
-                                    <li>USD</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <header class="custom-header">
+        <div class="header-container">
+            <div class="header-row">
+
+
+
+                <!-- Navigation -->
+                <nav class="header-nav">
+                    <ul class="header-menu">
+                        <li class="active"><a href="{{ url('/') }}">Home</a></li>
+
+
+
+                        @if (session()->has('id'))
+                            <li><a href="{{ url('/logout') }}">Logout</a></li>
+                        @else
+                            <li><a href="{{ url('/login') }}">Login</a></li>
+                            <li><a href="{{ url('/register') }}">Register</a></li>
+                        @endif
+                    </ul>
+                </nav>
+
+                <!-- Right Icons -->
+
+
             </div>
         </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-3">
-                    <div class="header__logo">
-                        <a href="./index.html"><img src="img/logo.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6">
-                    <nav class="header__menu mobile-menu">
-                        <ul>
-                           <li class="active"><a href="{{ url('/') }}">Home</a></li>
 
-                            <li><a href="{{ url('/shop') }}">Shop</a></li>
-                            <li><a href="#">Pages</a>
-                                <ul class="dropdown">
-                                    {{-- <li><a href="./about.html">About Us</a></li>
-                                    <li><a href="./shop-details.html">Shop Details</a></li> --}}
-                                    <li><a href="{{ url('/shop') }}">Shopping Cart</a></li>
-                                    <li><a href="{{ url('/checkout') }}">Check Out</a></li>
-                                    {{-- <li><a href="./blog-details.html">Blog Details</a></li> --}}
-                                </ul>
-                            </li>
+        {{-- Page-specific CSS --}}
+        <style>
+            /* HEADER BASE */
+            .custom-header {
+                background: #fff;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                position: sticky;
+                top: 0;
+                z-index: 999;
+            }
 
-                          @if (session()->has('id'))
-    <li><a href="{{ url('/logout') }}">Logout</a></li>
-@else
-    <li><a href="{{ url('/login') }}">Login</a></li>
-    <li><a href="{{ url('/register') }}">Register</a></li>
-@endif
+            .header-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 15px 20px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
 
-                        </ul>
-                    </nav>
-                </div>
-                <div class="col-lg-3 col-md-3">
-                    <div class="header__nav__option">
-                        <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
-                        <a href="#"><img src="img/icon/heart.png" alt=""></a>
-                        <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
-                        <div class="price">$0.00</div>
-                    </div>
-                </div>
-            </div>
-            <div class="canvas__open"><i class="fa fa-bars"></i></div>
-        </div>
+            .header-row {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+            }
+
+            /* LOGO */
+            .header-logo img {
+                height: 45px;
+            }
+
+            /* NAVIGATION */
+            .header-nav {
+                flex: 1;
+                text-align: center;
+            }
+
+            .header-menu {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                display: inline-flex;
+                gap: 25px;
+            }
+
+            .header-menu li {
+                position: relative;
+            }
+
+            .header-menu a {
+                text-decoration: none;
+                color: #222;
+                font-weight: 500;
+                font-size: 16px;
+                transition: color 0.3s ease;
+            }
+
+            .header-menu a:hover,
+            .header-menu .active a {
+                color: #007bff;
+            }
+
+            /* DROPDOWN */
+            .dropdown-menu {
+                position: absolute;
+                top: 35px;
+                left: 0;
+                background: #fff;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                border-radius: 5px;
+                display: none;
+                flex-direction: column;
+                min-width: 150px;
+                z-index: 1000;
+            }
+
+            .dropdown-menu li {
+                padding: 8px 15px;
+            }
+
+            .dropdown-menu li a {
+                color: #333;
+            }
+
+            .dropdown-menu li a:hover {
+                color: #007bff;
+            }
+
+            .dropdown:hover .dropdown-menu {
+                display: flex;
+            }
+
+            /* ICONS */
+            .header-icons {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .header-icons a img {
+                width: 20px;
+                height: 20px;
+                transition: transform 0.3s ease;
+            }
+
+            .header-icons a:hover img {
+                transform: scale(1.2);
+            }
+
+            .cart-count {
+                background-color: #007bff;
+                color: #fff;
+                border-radius: 50%;
+                font-size: 12px;
+                padding: 2px 6px;
+                margin-left: 3px;
+            }
+
+            .price {
+                font-weight: 600;
+                color: #333;
+            }
+
+            /* RESPONSIVE */
+            @media (max-width: 768px) {
+                .header-container {
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+
+                .header-menu {
+                    flex-direction: column;
+                    width: 100%;
+                    gap: 10px;
+                    margin-top: 10px;
+                }
+
+                .header-icons {
+                    margin-top: 10px;
+                    width: 100%;
+                    justify-content: space-between;
+                }
+            }
+        </style>
     </header>
+
     <!-- Header Section End -->
