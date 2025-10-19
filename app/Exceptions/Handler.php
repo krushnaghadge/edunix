@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Exceptions;
-
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 
@@ -27,4 +27,19 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+
+        public function render($request, Throwable $exception)
+    {
+        // If route not found (404)
+        if ($exception instanceof NotFoundHttpException) {
+            // Redirect to login with error message
+            return redirect('/login')->with('error', 'Please enter valid URL');
+        }
+
+        return parent::render($request, $exception);
+    }
+
+
+
 }

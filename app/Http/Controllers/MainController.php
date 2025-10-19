@@ -2,15 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cart;
-use App\Models\Order;
-use App\Models\OrderItem;
+
 use App\Models\Product;
-use Illuminate\Support\Facades\Log;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class MainController extends Controller
 {
@@ -31,7 +27,7 @@ class MainController extends Controller
     }
 
 
-  
+
 
 
 
@@ -79,16 +75,6 @@ class MainController extends Controller
     }
 
 
-
-
-
-
-
-
-
-
-
-
     public function showLogin()
     {
         return view('login'); // contains form with action="/loginUser"
@@ -104,13 +90,17 @@ class MainController extends Controller
             session()->put('id', $user->id);
             session()->put('type', $user->type);
 
-            return redirect('/');
-
-            //  return redirect('/');
-
+            if ($user->type == 'Admin') {
+                return redirect('/admin');
+            } else if ($user->type == 'Customer') {
+                return redirect('/');
+            }
+             else if ($user->type == 'superAdmin') {
+                return redirect('/superAdmin');
+            }
+        } else {
+            return redirect('/login')->with('error', 'Invalid credentials');
         }
-
-        return redirect('/login')->with('error', 'Invalid credentials');
     }
 
     public function dashboard()
@@ -127,6 +117,4 @@ class MainController extends Controller
 
         return view('dashboard', compact('allProduct', 'newArrival', 'hotSale'));
     }
-
-  
 }
