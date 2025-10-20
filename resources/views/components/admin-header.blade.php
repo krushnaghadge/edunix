@@ -2,402 +2,633 @@
 <html lang="en">
 
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Skydash Admin</title>
-  <!-- plugins:css -->
-  <link rel="stylesheet" href="Dashboard/vendors/feather/feather.css">
-  <link rel="stylesheet" href="Dashboard/vendors/ti-icons/css/themify-icons.css">
-  <link rel="stylesheet" href="Dashboard/vendors/css/vendor.bundle.base.css">
-  <!-- endinject -->
-  <!-- Plugin css for this page -->
-  <link rel="stylesheet" href="Dashboard/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
-  <link rel="stylesheet" href="Dashboard/vendors/ti-icons/css/themify-icons.css">
-  <link rel="stylesheet" type="text/css" href="Dashboard/js/select.dataTables.min.css">
-  <!-- End plugin css for this page -->
-  <!-- inject:css -->
-  <link rel="stylesheet" href="Dashboard/css/vertical-layout-light/style.css">
-  <!-- endinject -->
-  <link rel="shortcut icon" href="Dashboard/images/favicon.png" />
-</head>
-<body>
-  <div class="container-scroller">
-    <!-- partial:partials/_navbar.html -->
-    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo mr-5" href="{{ URL::to('/admin') }}"><img src="images/logo.svg" class="mr-2" alt="logo"/></a>
-        <a class="navbar-brand brand-logo-mini" href="{{ URL::to('/admin') }}"><img src="images/logo-mini.svg" alt="logo"/></a>
-      </div>
-      <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
-        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-          <span class="icon-menu"></span>
-        </button>
-        <ul class="navbar-nav mr-lg-2">
-          <li class="nav-item nav-search d-none d-lg-block">
-            <div class="input-group">
-              <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
-                <span class="input-group-text" id="search">
-                  <i class="icon-search"></i>
-                </span>
-              </div>
-              <input type="text" class="form-control" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search">
-            </div>
-          </li>
-        </ul>
-        <ul class="navbar-nav navbar-nav-right">
-          <li class="nav-item dropdown">
-            <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
-              <i class="icon-bell mx-0"></i>
-              <span class="count"></span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
-              <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
-              <a class="dropdown-item preview-item">
-                <div class="preview-thumbnail">
-                  <div class="preview-icon bg-success">
-                    <i class="ti-info-alt mx-0"></i>
-                  </div>
-                </div>
-                <div class="preview-item-content">
-                  <h6 class="preview-subject font-weight-normal">Application Error</h6>
-                  <p class="font-weight-light small-text mb-0 text-muted">
-                    Just now
-                  </p>
-                </div>
-              </a>
-              <a class="dropdown-item preview-item">
-                <div class="preview-thumbnail">
-                  <div class="preview-icon bg-warning">
-                    <i class="ti-settings mx-0"></i>
-                  </div>
-                </div>
-                <div class="preview-item-content">
-                  <h6 class="preview-subject font-weight-normal">Settings</h6>
-                  <p class="font-weight-light small-text mb-0 text-muted">
-                    Private message
-                  </p>
-                </div>
-              </a>
-              <a class="dropdown-item preview-item">
-                <div class="preview-thumbnail">
-                  <div class="preview-icon bg-info">
-                    <i class="ti-user mx-0"></i>
-                  </div>
-                </div>
-                <div class="preview-item-content">
-                  <h6 class="preview-subject font-weight-normal">New user registration</h6>
-                  <p class="font-weight-light small-text mb-0 text-muted">
-                    2 days ago
-                  </p>
-                </div>
-              </a>
-            </div>
-          </li>
-          <li class="nav-item nav-profile dropdown">
-            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-              <img src="images/faces/face28.jpg" alt="profile"/>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-              <a class="dropdown-item">
-                <i class="ti-settings text-primary"></i>
-                Settings
-              </a>
-              <a class="dropdown-item">
-                <i class="ti-power-off text-primary"></i>
-                Logout
-              </a>
-            </div>
-          </li>
-          <li class="nav-item nav-settings d-none d-lg-flex">
-            <a class="nav-link" href="#">
-              <i class="icon-ellipsis"></i>
-            </a>
-          </li>
-        </ul>
-        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
-          <span class="icon-menu"></span>
-        </button>
-      </div>
-    </nav>
-    <!-- partial -->
-    <div class="container-fluid page-body-wrapper">
-      <!-- partial:partials/_settings-panel.html -->
-      <div class="theme-setting-wrapper">
-        <div id="settings-trigger"><i class="ti-settings"></i></div>
-        <div id="theme-settings" class="settings-panel">
-          <i class="settings-close ti-close"></i>
-          <p class="settings-heading">SIDEBAR SKINS</p>
-          <div class="sidebar-bg-options selected" id="sidebar-light-theme"><div class="img-ss rounded-circle bg-light border mr-3"></div>Light</div>
-          <div class="sidebar-bg-options" id="sidebar-dark-theme"><div class="img-ss rounded-circle bg-dark border mr-3"></div>Dark</div>
-          <p class="settings-heading mt-2">HEADER SKINS</p>
-          <div class="color-tiles mx-0 px-4">
-            <div class="tiles success"></div>
-            <div class="tiles warning"></div>
-            <div class="tiles danger"></div>
-            <div class="tiles info"></div>
-            <div class="tiles dark"></div>
-            <div class="tiles default"></div>
-          </div>
-        </div>
-      </div>
-      <div id="right-sidebar" class="settings-panel">
-        <i class="settings-close ti-close"></i>
-        <ul class="nav nav-tabs border-top" id="setting-panel" role="tablist">
-          <li class="nav-item">
-            <a class="nav-link active" id="todo-tab" data-toggle="tab" href="#todo-section" role="tab" aria-controls="todo-section" aria-expanded="true">TO DO LIST</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="chats-tab" data-toggle="tab" href="#chats-section" role="tab" aria-controls="chats-section">CHATS</a>
-          </li>
-        </ul>
-        <div class="tab-content" id="setting-content">
-          <div class="tab-pane fade show active scroll-wrapper" id="todo-section" role="tabpanel" aria-labelledby="todo-section">
-            <div class="add-items d-flex px-3 mb-0">
-              <form class="form w-100">
-                <div class="form-group d-flex">
-                  <input type="text" class="form-control todo-list-input" placeholder="Add To-do">
-                  <button type="submit" class="add btn btn-primary todo-list-add-btn" id="add-task">Add</button>
-                </div>
-              </form>
-            </div>
-            <div class="list-wrapper px-3">
-              <ul class="d-flex flex-column-reverse todo-list">
-                <li>
-                  <div class="form-check">
-                    <label class="form-check-label">
-                      <input class="checkbox" type="checkbox">
-                      Team review meeting at 3.00 PM
-                    </label>
-                  </div>
-                  <i class="remove ti-close"></i>
-                </li>
-                <li>
-                  <div class="form-check">
-                    <label class="form-check-label">
-                      <input class="checkbox" type="checkbox">
-                      Prepare for presentation
-                    </label>
-                  </div>
-                  <i class="remove ti-close"></i>
-                </li>
-                <li>
-                  <div class="form-check">
-                    <label class="form-check-label">
-                      <input class="checkbox" type="checkbox">
-                      Resolve all the low priority tickets due today
-                    </label>
-                  </div>
-                  <i class="remove ti-close"></i>
-                </li>
-                <li class="completed">
-                  <div class="form-check">
-                    <label class="form-check-label">
-                      <input class="checkbox" type="checkbox" checked>
-                      Schedule meeting for next week
-                    </label>
-                  </div>
-                  <i class="remove ti-close"></i>
-                </li>
-                <li class="completed">
-                  <div class="form-check">
-                    <label class="form-check-label">
-                      <input class="checkbox" type="checkbox" checked>
-                      Project review
-                    </label>
-                  </div>
-                  <i class="remove ti-close"></i>
-                </li>
-              </ul>
-            </div>
-            <h4 class="px-3 text-muted mt-5 font-weight-light mb-0">Events</h4>
-            <div class="events pt-4 px-3">
-              <div class="wrapper d-flex mb-2">
-                <i class="ti-control-record text-primary mr-2"></i>
-                <span>Feb 11 2018</span>
-              </div>
-              <p class="mb-0 font-weight-thin text-gray">Creating component page build a js</p>
-              <p class="text-gray mb-0">The total number of sessions</p>
-            </div>
-            <div class="events pt-4 px-3">
-              <div class="wrapper d-flex mb-2">
-                <i class="ti-control-record text-primary mr-2"></i>
-                <span>Feb 7 2018</span>
-              </div>
-              <p class="mb-0 font-weight-thin text-gray">Meeting with Alisa</p>
-              <p class="text-gray mb-0 ">Call Sarah Graves</p>
-            </div>
-          </div>
-          <!-- To do section tab ends -->
-          <div class="tab-pane fade" id="chats-section" role="tabpanel" aria-labelledby="chats-section">
-            <div class="d-flex align-items-center justify-content-between border-bottom">
-              <p class="settings-heading border-top-0 mb-3 pl-3 pt-0 border-bottom-0 pb-0">Friends</p>
-              <small class="settings-heading border-top-0 mb-3 pt-0 border-bottom-0 pb-0 pr-3 font-weight-normal">See All</small>
-            </div>
-            <ul class="chat-list">
-              <li class="list active">
-                <div class="profile"><img src="images/faces/face1.jpg" alt="image"><span class="online"></span></div>
-                <div class="info">
-                  <p>Thomas Douglas</p>
-                  <p>Available</p>
-                </div>
-                <small class="text-muted my-auto">19 min</small>
-              </li>
-              <li class="list">
-                <div class="profile"><img src="images/faces/face2.jpg" alt="image"><span class="offline"></span></div>
-                <div class="info">
-                  <div class="wrapper d-flex">
-                    <p>Catherine</p>
-                  </div>
-                  <p>Away</p>
-                </div>
-                <div class="badge badge-success badge-pill my-auto mx-2">4</div>
-                <small class="text-muted my-auto">23 min</small>
-              </li>
-              <li class="list">
-                <div class="profile"><img src="images/faces/face3.jpg" alt="image"><span class="online"></span></div>
-                <div class="info">
-                  <p>Daniel Russell</p>
-                  <p>Available</p>
-                </div>
-                <small class="text-muted my-auto">14 min</small>
-              </li>
-              <li class="list">
-                <div class="profile"><img src="images/faces/face4.jpg" alt="image"><span class="offline"></span></div>
-                <div class="info">
-                  <p>James Richardson</p>
-                  <p>Away</p>
-                </div>
-                <small class="text-muted my-auto">2 min</small>
-              </li>
-              <li class="list">
-                <div class="profile"><img src="images/faces/face5.jpg" alt="image"><span class="online"></span></div>
-                <div class="info">
-                  <p>Madeline Kennedy</p>
-                  <p>Available</p>
-                </div>
-                <small class="text-muted my-auto">5 min</small>
-              </li>
-              <li class="list">
-                <div class="profile"><img src="images/faces/face6.jpg" alt="image"><span class="online"></span></div>
-                <div class="info">
-                  <p>Sarah Graves</p>
-                  <p>Available</p>
-                </div>
-                <small class="text-muted my-auto">47 min</small>
-              </li>
-            </ul>
-          </div>
-          <!-- chat tab ends -->
-        </div>
-      </div>
-      <!-- partial -->
-      <!-- partial:partials/_sidebar.html -->
-      <nav class="sidebar sidebar-offcanvas" id="sidebar">
-        <ul class="nav">
-          <li class="nav-item">
-            <a class="nav-link" href="{{ URL::to('/admin') }}">
-              <i class="icon-grid menu-icon"></i>
-              <span class="menu-title">Dashboard</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-              <i class="icon-layout menu-icon"></i>
-              <span class="menu-title">Add Product</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="ui-basic">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{ URL::to('/adminProducts') }}">View All</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Test page</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
-              <i class="icon-columns menu-icon"></i>
-              <span class="menu-title">Our Customers</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="form-elements">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">View All</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
-              <i class="icon-bar-graph menu-icon"></i>
-              <span class="menu-title">Our Orderes</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="charts">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/charts/chartjs.html">View All</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
-              <i class="icon-grid-2 menu-icon"></i>
-              <span class="menu-title">Delivery Boy</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="tables">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table.html">Basic table</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#icons" aria-expanded="false" aria-controls="icons">
-              <i class="icon-contract menu-icon"></i>
-              <span class="menu-title">Staff</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="icons">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/icons/mdi.html">Mdi icons</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-              <i class="icon-head menu-icon"></i>
-              <span class="menu-title">User Pages</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="auth">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{ URL::to('/logout') }}"> LogOut </a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{ URL::to('/adminProfile') }}"> Profile </a></li>
-              </ul>
-            </div>
-          </li>
-          {{-- <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#error" aria-expanded="false" aria-controls="error">
-              <i class="icon-ban menu-icon"></i>
-              <span class="menu-title">CMS</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="error">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/error-404.html"> 404 </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html"> 500 </a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="pages/documentation/documentation.html">
-              <i class="icon-paper menu-icon"></i>
-              <span class="menu-title">Documentation Page</span>
-            </a>
-          </li> --}}
-        </ul>
-      </nav>
-
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Skydash Admin</title>
       
-          <div class="main-panel">
-        <div class="content-wrapper">
-         
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="Dashboard/vendors/feather/feather.css">
+    <link rel="stylesheet" href="Dashboard/vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="Dashboard/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="Dashboard/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="Dashboard/vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" type="text/css" href="Dashboard/js/select.dataTables.min.css">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="Dashboard/css/vertical-layout-light/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="Dashboard/images/favicon.png" />
+</head>
+
+<body>
+    <div class="container-scroller">
+        <!-- partial:partials/_navbar.html -->
+        <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+            <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+                <a class="navbar-brand brand-logo mr-5" href="{{ URL::to('/admin') }}"><img src="images/logo.svg"
+                        class="mr-2" alt="logo" /></a>
+                <a class="navbar-brand brand-logo-mini" href="{{ URL::to('/admin') }}"><img src="images/logo-mini.svg"
+                        alt="logo" /></a>
+            </div>
+            <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+                <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+                    <span class="icon-menu"></span>
+                </button>
+                <ul class="navbar-nav mr-lg-2">
+                    <li class="nav-item nav-search d-none d-lg-block">
+                        <div class="input-group">
+                            <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
+                                <span class="input-group-text" id="search">
+                                    <i class="icon-search"></i>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control" id="navbar-search-input" placeholder="Search now"
+                                aria-label="search" aria-describedby="search">
+                        </div>
+                    </li>
+                </ul>
+                <ul class="navbar-nav navbar-nav-right">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#"
+                            data-toggle="dropdown">
+                            <i class="icon-bell mx-0"></i>
+                            <span class="count"></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
+                            aria-labelledby="notificationDropdown">
+                            <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
+                            <a class="dropdown-item preview-item">
+                                <div class="preview-thumbnail">
+                                    <div class="preview-icon bg-success">
+                                        <i class="ti-info-alt mx-0"></i>
+                                    </div>
+                                </div>
+                                <div class="preview-item-content">
+                                    <h6 class="preview-subject font-weight-normal">Application Error</h6>
+                                    <p class="font-weight-light small-text mb-0 text-muted">
+                                        Just now
+                                    </p>
+                                </div>
+                            </a>
+                            <a class="dropdown-item preview-item">
+                                <div class="preview-thumbnail">
+                                    <div class="preview-icon bg-warning">
+                                        <i class="ti-settings mx-0"></i>
+                                    </div>
+                                </div>
+                                <div class="preview-item-content">
+                                    <h6 class="preview-subject font-weight-normal">Settings</h6>
+                                    <p class="font-weight-light small-text mb-0 text-muted">
+                                        Private message
+                                    </p>
+                                </div>
+                            </a>
+                            <a class="dropdown-item preview-item">
+                                <div class="preview-thumbnail">
+                                    <div class="preview-icon bg-info">
+                                        <i class="ti-user mx-0"></i>
+                                    </div>
+                                </div>
+                                <div class="preview-item-content">
+                                    <h6 class="preview-subject font-weight-normal">New user registration</h6>
+                                    <p class="font-weight-light small-text mb-0 text-muted">
+                                        2 days ago
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                    <li class="nav-item nav-profile dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
+                            <img src="images/faces/face28.jpg" alt="profile" />
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
+                            aria-labelledby="profileDropdown">
+                            <a class="dropdown-item">
+                                <i class="ti-settings text-primary"></i>
+                                Settings
+                            </a>
+                            <a class="dropdown-item">
+                                <i class="ti-power-off text-primary"></i>
+                                Logout
+                            </a>
+                        </div>
+                    </li>
+                    <li class="nav-item nav-settings d-none d-lg-flex">
+                        <a class="nav-link" href="#">
+                            <i class="icon-ellipsis"></i>
+                        </a>
+                    </li>
+                </ul>
+                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+                    data-toggle="offcanvas">
+                    <span class="icon-menu"></span>
+                </button>
+            </div>
+        </nav>
+        <!-- partial -->
+        <div class="container-fluid page-body-wrapper">
+            <!-- partial:partials/_settings-panel.html -->
+            <div class="theme-setting-wrapper">
+                <div id="settings-trigger"><i class="ti-settings"></i></div>
+                <div id="theme-settings" class="settings-panel">
+                    <i class="settings-close ti-close"></i>
+                    <p class="settings-heading">SIDEBAR SKINS</p>
+                    <div class="sidebar-bg-options selected" id="sidebar-light-theme">
+                        <div class="img-ss rounded-circle bg-light border mr-3"></div>Light
+                    </div>
+                    <div class="sidebar-bg-options" id="sidebar-dark-theme">
+                        <div class="img-ss rounded-circle bg-dark border mr-3"></div>Dark
+                    </div>
+                    <p class="settings-heading mt-2">HEADER SKINS</p>
+                    <div class="color-tiles mx-0 px-4">
+                        <div class="tiles success"></div>
+                        <div class="tiles warning"></div>
+                        <div class="tiles danger"></div>
+                        <div class="tiles info"></div>
+                        <div class="tiles dark"></div>
+                        <div class="tiles default"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- partial -->
+            <!-- partial:partials/_sidebar.html -->
+            <nav class="sidebar sidebar-offcanvas" id="sidebar">
+                <ul class="nav">
+
+                    <!-- Dashboard -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ URL::to('/admin') }}">
+                            <i class="icon-grid menu-icon"></i>
+                            <span class="menu-title">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <!-- Lead/Inquiry -->
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#lead-inquiry" aria-expanded="false"
+                            aria-controls="lead-inquiry">
+                            <i class="icon-layout menu-icon"></i>
+                            <span class="menu-title">Lead/Inquiry</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="lead-inquiry">
+                            <ul class="nav flex-column sub-menu">
+                             
+                                <li class="nav-item"><a class="nav-link" href="{{ URL::to('/add-leads') }}">Add
+                                        Leads</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ URL::to('/leadAssign') }}">Lead
+                                        Assign</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ URL::to('/leadSources') }}">Lead
+                                        Sources</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ URL::to('/leadStatus') }}">Lead
+                                        Status</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- Student -->
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#student" aria-expanded="false"
+                            aria-controls="student">
+                            <i class="icon-graduation menu-icon"></i>
+                            <span class="menu-title">Student</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="student">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"><a class="nav-link" href="{{ URL::to('/allStudents') }}">All
+                                        Students</a></li>
+                                <li class="nav-item"><a class="nav-link"
+                                        href="{{ URL::to('/passedStudents') }}">Passed</a></li>
+                                <li class="nav-item"><a class="nav-link"
+                                        href="{{ URL::to('/droppedStudents') }}">Dropped</a></li>
+                                <li class="nav-item"><a class="nav-link"
+                                        href="{{ URL::to('/migrationStudents') }}">Migration</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- Teacher -->
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#teacher" aria-expanded="false"
+                            aria-controls="teacher">
+                            <i class="icon-book-open menu-icon"></i>
+                            <span class="menu-title">Teacher</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="teacher">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"><a class="nav-link" href="{{ URL::to('/allTeachers') }}">All
+                                        Teachers</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- Employees -->
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#employees" aria-expanded="false"
+                            aria-controls="employees">
+                            <i class="icon-briefcase menu-icon"></i>
+                            <span class="menu-title">Employees</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="employees">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"><a class="nav-link"
+                                        href="{{ URL::to('/employeeRoles') }}">Employee Roles</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ URL::to('/allEmployees') }}">All
+                                        Employees</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ URL::to('/parent') }}">Parent</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- Sibling -->
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#sibling" aria-expanded="false"
+                            aria-controls="sibling">
+                            <i class="icon-user menu-icon"></i>
+                            <span class="menu-title">Sibling</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="sibling">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"><a class="nav-link" href="{{ URL::to('/allSiblings') }}">All
+                                        Siblings</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- Fees -->
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#fees" aria-expanded="false"
+                            aria-controls="fees">
+                            <i class="icon-wallet menu-icon"></i>
+                            <span class="menu-title">Fees</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="fees">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"><a class="nav-link"
+                                        href="{{ URL::to('/collectFees') }}">Collect/Demand Fees</a></li>
+                                <li class="nav-item"><a class="nav-link"
+                                        href="{{ URL::to('/feesDefaulters') }}">Fees Defaulters</a></li>
+                                <li class="nav-item"><a class="nav-link"
+                                        href="{{ URL::to('/collectFeesLags') }}">Collect Fees Lags</a></li>
+                                <li class="nav-item"><a class="nav-link"
+                                        href="{{ URL::to('/feesCollectionReport') }}">Fees Collection Report</a></li>
+                                <li class="nav-item"><a class="nav-link"
+                                        href="{{ URL::to('/feesStructureSetup') }}">Fees Structure Setup</a></li>
+                                <li class="nav-item"><a class="nav-link"
+                                        href="{{ URL::to('/feesStructureReport') }}">Fees Structure Report</a></li>
+                                <li class="nav-item"><a class="nav-link"
+                                        href="{{ URL::to('/feesCollectionMonthly') }}">Fees Collection (Monthly)</a>
+                                </li>
+                                <li class="nav-item"><a class="nav-link"
+                                        href="{{ URL::to('/onlineFeesStructure') }}">Online Fees Structure</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- Mobile App Users -->
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#mobileAppUser" aria-expanded="false"
+                            aria-controls="mobileAppUser">
+                            <i class="icon-phone menu-icon"></i>
+                            <span class="menu-title">Mobile App User</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="mobileAppUser">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"><a class="nav-link" href="{{ URL::to('/mobileAppUsers') }}">All
+                                        Users</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- Homework -->
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#homework" aria-expanded="false"
+                            aria-controls="homework">
+                            <i class="icon-book menu-icon"></i>
+                            <span class="menu-title">Homework</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="homework">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"><a class="nav-link" href="{{ URL::to('/homework') }}">All
+                                        Homework</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- House Block -->
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#houseBlock" aria-expanded="false"
+                            aria-controls="houseBlock">
+                            <i class="icon-home menu-icon"></i>
+                            <span class="menu-title">House Block</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="houseBlock">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"><a class="nav-link" href="{{ URL::to('/houseBlocks') }}">All
+                                        House Blocks</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- Attendance -->
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#attendance" aria-expanded="false"
+                            aria-controls="attendance">
+                            <i class="icon-check menu-icon"></i>
+                            <span class="menu-title">Attendance</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="attendance">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"><a class="nav-link"
+                                        href="{{ URL::to('/studentAttendance') }}">Student Attendance</a></li>
+                                <li class="nav-item"><a class="nav-link"
+                                        href="{{ URL::to('/staffAttendance') }}">Staff Attendance</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ URL::to('/qrCodeLags') }}">QR Code
+                                        Lags</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- Leaves -->
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#leaves" aria-expanded="false"
+                            aria-controls="leaves">
+                            <i class="icon-logout menu-icon"></i>
+                            <span class="menu-title">Leaves</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="leaves">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"><a class="nav-link" href="{{ URL::to('/leaveRequest') }}">Leave
+                                        Request</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ URL::to('/myLeave') }}">My
+                                        Leave</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ URL::to('/leaveType') }}">Leave
+                                        Type</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ URL::to('/leaveSetting') }}">Leave
+                                        Setting</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- User Management -->
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#userManagement" aria-expanded="false"
+                            aria-controls="userManagement">
+                            <i class="icon-user menu-icon"></i>
+                            <span class="menu-title">User Management</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="userManagement">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"><a class="nav-link" href="{{ URL::to('/addUser') }}">Add
+                                        User</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ URL::to('/viewUsers') }}">View
+                                        Users</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ URL::to('/editUser') }}">Edit
+                                        User</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ URL::to('/deleteUser') }}">Delete
+                                        User</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- School Management -->
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#schoolManagement" aria-expanded="false"
+                            aria-controls="schoolManagement">
+                            <i class="icon-home menu-icon"></i>
+                            <span class="menu-title">School Management</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="schoolManagement">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"><a class="nav-link" href="{{ URL::to('/addSchool') }}">Add
+                                        School</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ URL::to('/viewSchools') }}">View
+                                        Schools</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ URL::to('/editSchool') }}">Edit
+                                        School</a></li>
+                                <li class="nav-item"><a class="nav-link"
+                                        href="{{ URL::to('/deleteSchool') }}">Delete School</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- Examination / Online Exams -->
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#exams" aria-expanded="false"
+                            aria-controls="exams">
+                            <i class="icon-notebook menu-icon"></i>
+                            <span class="menu-title">Online Exams</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="exams">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"><a class="nav-link" href="{{ URL::to('/createExam') }}">Create
+                                        Exam</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ URL::to('/viewResults') }}">View
+                                        Results</a></li>
+                                <li class="nav-item"><a class="nav-link"
+                                        href="{{ URL::to('/gradingSetup') }}">Grading Setup</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- Transport Management -->
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#transport" aria-expanded="false"
+                            aria-controls="transport">
+                            <i class="icon-directions menu-icon"></i>
+                            <span class="menu-title">Transport Management</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="transport">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"><a class="nav-link" href="{{ URL::to('/addVehicle') }}">Add
+                                        Vehicle</a></li>
+                                <li class="nav-item"><a class="nav-link"
+                                        href="{{ URL::to('/routeManagement') }}">Route Management</a></li>
+                                <li class="nav-item"><a class="nav-link"
+                                        href="{{ URL::to('/driverDetails') }}">Driver Details</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- Document Management / Cloud Storage -->
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#documents" aria-expanded="false"
+                            aria-controls="documents">
+                            <i class="icon-cloud menu-icon"></i>
+                            <span class="menu-title">Document Management</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="documents">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"><a class="nav-link"
+                                        href="{{ URL::to('/uploadDocuments') }}">Upload Documents</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ URL::to('/viewFiles') }}">View
+                                        Files</a></li>
+                                <li class="nav-item"><a class="nav-link"
+                                        href="{{ URL::to('/assignClasses') }}">Assign to Classes</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- Curriculum / Subject and Exam Management -->
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#curriculum" aria-expanded="false"
+                            aria-controls="curriculum">
+                            <i class="icon-book menu-icon"></i>
+                            <span class="menu-title">Curriculum</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="curriculum">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"><a class="nav-link"
+                                        href="{{ URL::to('/subjectList') }}">Subject List</a></li>
+                                <li class="nav-item"><a class="nav-link"
+                                        href="{{ URL::to('/addExamCurriculum') }}">Add Exam</a></li>
+                                <li class="nav-item"><a class="nav-link"
+                                        href="{{ URL::to('/viewExamResults') }}">View Exam Results</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- Help Desk / Support Center -->
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#helpdesk" aria-expanded="false"
+                            aria-controls="helpdesk">
+                            <i class="icon-support menu-icon"></i>
+                            <span class="menu-title">Support Center</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="helpdesk">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"><a class="nav-link" href="{{ URL::to('/raiseTicket') }}">Raise
+                                        Ticket</a></li>
+                                <li class="nav-item"><a class="nav-link"
+                                        href="{{ URL::to('/viewOpenTickets') }}">View Open Tickets</a></li>
+                                <li class="nav-item"><a class="nav-link"
+                                        href="{{ URL::to('/ticketHistory') }}">Ticket History</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- Events / School Calendar -->
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#events" aria-expanded="false"
+                            aria-controls="events">
+                            <i class="icon-calendar menu-icon"></i>
+                            <span class="menu-title">School Calendar</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="events">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"><a class="nav-link" href="{{ URL::to('/addEvent') }}">Add
+                                        Event</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ URL::to('/viewCalendar') }}">View
+                                        Calendar</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- Academic Setup / Grade and House Management -->
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#academicSetup" aria-expanded="false"
+                            aria-controls="academicSetup">
+                            <i class="icon-layers menu-icon"></i>
+                            <span class="menu-title">Academic Setup</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="academicSetup">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"><a class="nav-link"
+                                        href="{{ URL::to('/defineGrades') }}">Define Grades</a></li>
+                                <li class="nav-item"><a class="nav-link"
+                                        href="{{ URL::to('/houseListings') }}">House Listings</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- Media / Gallery -->
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#gallery" aria-expanded="false"
+                            aria-controls="gallery">
+                            <i class="icon-picture menu-icon"></i>
+                            <span class="menu-title">Gallery</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="gallery">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"><a class="nav-link"
+                                        href="{{ URL::to('/uploadImages') }}">Upload Images</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ URL::to('/eventPhotos') }}">Event
+                                        Photos</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- Reports / Reports and Analytics -->
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#reports" aria-expanded="false"
+                            aria-controls="reports">
+                            <i class="icon-graph menu-icon"></i>
+                            <span class="menu-title">Reports</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="reports">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"><a class="nav-link"
+                                        href="{{ URL::to('/studentPerformance') }}">Student Performance</a></li>
+                                <li class="nav-item"><a class="nav-link"
+                                        href="{{ URL::to('/financialReports') }}">Financial Reports</a></li>
+                                <li class="nav-item"><a class="nav-link"
+                                        href="{{ URL::to('/attendanceSummary') }}">Attendance Summary</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+
+                    <!-- User Profile -->
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false"
+                            aria-controls="auth">
+                            <i class="icon-head menu-icon"></i>
+                            <span class="menu-title">User Profile</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="auth">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"><a class="nav-link" href="{{ URL::to('/logout') }}">Logout</a>
+                                </li>
+                                <li class="nav-item"><a class="nav-link"
+                                        href="{{ URL::to('/adminProfile') }}">Profile</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+
+
+                </ul>
+            </nav>
+
+
+
+            <div class="main-panel">
+                <div class="content-wrapper">

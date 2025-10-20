@@ -7,59 +7,69 @@ use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    // Show all students with pagination
     public function index()
     {
-        //
+        $students = Student::orderBy('created_at', 'desc')->paginate(10);
+         return view('Dashboard.students.index', compact('students'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    // Show create student form
     public function create()
     {
-        //
+        return view('Dashboard.students.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    // Store new student
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'   => 'required|string|max:255',
+            'email'  => 'nullable|email|unique:students,email',
+            'phone'  => 'nullable|string|max:20',
+            'course' => 'nullable|string|max:100',
+        ]);
+
+        $student = new Student;
+        $student->name   = $request->name;
+        // $student->email  = $request->email;
+        $student->phone  = $request->phone;
+        $student->course = $request->course;
+        $student->save();
+
+        return redirect()->route('students.index')->with('success', 'Student added successfully!');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Student $student)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
+    // Show edit student form
     public function edit(Student $student)
     {
-        //
+        return view('Dashboard.students.edit', compact('student'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+    // Update student
     public function update(Request $request, Student $student)
     {
-        //
+        $request->validate([
+            'name'   => 'required|string|max:255',
+            // 'email'  => 'nullable|email|unique:students,email,' . $student->id,
+            'phone'  => 'nullable|string|max:20',
+            'course' => 'nullable|string|max:100',
+            'institution_id' => 'required|integer', 
+        ]);
+
+        $student->name   = $request->name;
+         $student->institution_id = 1;
+        $student->phone  = $request->phone;
+        $student->course = $request->course;
+        $student->save();
+
+        return redirect()->route('Dashboard.students.index')->with('success', 'Student updated successfully!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    // Delete student
     public function destroy(Student $student)
     {
-        //
+        $student->delete();
+        return redirect()->route('Dashboard.students.index')->with('success', 'Student deleted successfully!');
     }
 }

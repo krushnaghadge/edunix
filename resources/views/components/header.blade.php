@@ -3,14 +3,18 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Male_Fashion Template">
-    <meta name="keywords" content="Male_Fashion, unica, creative, html">
+    <meta name="description" content="Edunix ERP - Complete School and Institute Management Software">
+    <meta name="keywords" content="School Management, Institute ERP, Student Management, Attendance, Fees, Exam Management, Timetable, Edunix ERP">
+    <meta name="author" content="Edunix Solutions">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Edunix Erp</title>
+    
+    <title>Edunix ERP</title>
 
-
+    <!-- Favicon as Emoji (📚) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='32'>📚</text></svg>">
 </head>
+
 
 <body>
     <!-- Page Preloder -->

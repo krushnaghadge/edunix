@@ -18,12 +18,13 @@ class MainController extends Controller
 
         // dd($allProduct);
 
-        $allProduct = Product::all();
-        $newArrival = Product::where('type', 'new-arrivals')->get();
-        $hotSale = Product::where('type', 'hot-sales')->get();
+        // $allProduct = Product::all();
+        // $newArrival = Product::where('type', 'new-arrivals')->get();
+        // $hotSale = Product::where('type', 'hot-sales')->get();
         // return view('dashbord');
 
-        return view('dashboard', compact('allProduct', 'newArrival', 'hotSale'));
+        // return view('Landing/dashboard', compact('allProduct', 'newArrival', 'hotSale'));
+         return view('Landing/dashboard');
     }
 
 
@@ -37,7 +38,7 @@ class MainController extends Controller
 
     public function register()
     {
-        return view('register');
+        return view('Landing/register');
     }
 
     public function registerUser(Request $data)
@@ -54,7 +55,7 @@ class MainController extends Controller
         $newUser->type = "Customer";
 
         if ($newUser->save()) {
-            return view('login')->with('success', 'Your account is created. Please login.');
+            return view('Landing/login')->with('success', 'Your account is created. Please login.');
         }
 
         return redirect()->back()->with('error', 'Registration failed. Try again.');
@@ -71,13 +72,13 @@ class MainController extends Controller
     public function logout()
     {
         session()->flush(); // Clear all session data
-        return redirect('/login')->with('success', 'Logged out successfully.');
+        return redirect('Landing/login')->with('success', 'Logged out successfully.');
     }
 
 
     public function showLogin()
     {
-        return view('login'); // contains form with action="/loginUser"
+        return view('Landing/login'); // contains form with action="/loginUser"
     }
 
     public function loginUser(Request $request)
@@ -94,19 +95,18 @@ class MainController extends Controller
                 return redirect('/admin');
             } else if ($user->type == 'Customer') {
                 return redirect('/');
-            }
-             else if ($user->type == 'superAdmin') {
+            } else if ($user->type == 'superAdmin') {
                 return redirect('/superAdmin');
             }
         } else {
-            return redirect('/login')->with('error', 'Invalid credentials');
+            return redirect('Landing/login')->with('error', 'Invalid credentials');
         }
     }
 
     public function dashboard()
     {
         if (!session()->has('id')) {
-            return redirect('/login')->with('error', 'Please log in first.');
+            return redirect('Landing/login')->with('error', 'Please log in first.');
         }
 
 
@@ -115,6 +115,6 @@ class MainController extends Controller
         $hotSale = Product::where('type', 'hot-sales')->get();
         // dd($allProduct);
 
-        return view('dashboard', compact('allProduct', 'newArrival', 'hotSale'));
+        return view('Landing/dashboard', compact('allProduct', 'newArrival', 'hotSale'));
     }
 }
