@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Product;
-
+use App\Models\Institution;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -16,14 +16,6 @@ class MainController extends Controller
     public function index()
     {
 
-        // dd($allProduct);
-
-        // $allProduct = Product::all();
-        // $newArrival = Product::where('type', 'new-arrivals')->get();
-        // $hotSale = Product::where('type', 'hot-sales')->get();
-        // return view('dashbord');
-
-        // return view('Landing/dashboard', compact('allProduct', 'newArrival', 'hotSale'));
          return view('Landing/dashboard');
     }
 
@@ -90,6 +82,12 @@ class MainController extends Controller
         if ($user) {
             session()->put('id', $user->id);
             session()->put('type', $user->type);
+            $institution = Institution::where('user_id', $user->id)->first();
+
+        if ($institution) {
+            session()->put('institute_id', $institution->id);
+        }
+            // dd(session()->all());
 
             if ($user->type == 'Admin') {
                 return redirect('/admin');

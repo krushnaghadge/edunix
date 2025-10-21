@@ -59,7 +59,7 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
                             aria-labelledby="notificationDropdown">
-                            <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
+                            <p class="mb-0 font-weight-normal float-left dropdown-header">Sessions</p>
                             <a class="dropdown-item preview-item">
                                 <div class="preview-thumbnail">
                                     <div class="preview-icon bg-success">
@@ -67,9 +67,11 @@
                                     </div>
                                 </div>
                                 <div class="preview-item-content">
-                                    <h6 class="preview-subject font-weight-normal">Application Error</h6>
+                                    <h6 class="preview-subject font-weight-normal"> User{{ session('id') }}
+
+</h6>
                                     <p class="font-weight-light small-text mb-0 text-muted">
-                                        Just now
+                                       {{ session('type') }}
                                     </p>
                                 </div>
                             </a>
@@ -80,7 +82,7 @@
                                     </div>
                                 </div>
                                 <div class="preview-item-content">
-                                    <h6 class="preview-subject font-weight-normal">Settings</h6>
+                                    <h6 class="preview-subject font-weight-normal"> Institue{{ session('institute_id') }}</h6>
                                     <p class="font-weight-light small-text mb-0 text-muted">
                                         Private message
                                     </p>
