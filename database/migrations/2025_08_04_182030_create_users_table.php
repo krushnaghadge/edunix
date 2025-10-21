@@ -17,14 +17,14 @@ return new class extends Migration
             $table->string('email');
             $table->string('password');
             $table->string('picture');
-            $table->string('type')->default("Customer");
+            $table->string('type')->default("admin");
+            $table->enum('role', ['super_admin', 'admin', 'teacher', 'student', 'parent', 'cashier', 'user'])->default('user');
+
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
+
     public function down(): void
     {
         Schema::dropIfExists('users');

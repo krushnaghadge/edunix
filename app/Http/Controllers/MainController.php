@@ -16,7 +16,7 @@ class MainController extends Controller
     public function index()
     {
 
-         return view('Landing/dashboard');
+        return view('Landing/dashboard');
     }
 
 
@@ -82,19 +82,22 @@ class MainController extends Controller
         if ($user) {
             session()->put('id', $user->id);
             session()->put('type', $user->type);
+            session()->put('role', $user->type);
             $institution = Institution::where('user_id', $user->id)->first();
 
-        if ($institution) {
-            session()->put('institute_id', $institution->id);
-        }
+            if ($institution) {
+                session()->put('institute_id', $institution->id);
+            }
             // dd(session()->all());
 
-            if ($user->type == 'Admin') {
+            if ($user->type == 'admin') {
                 return redirect('/admin');
             } else if ($user->type == 'Customer') {
                 return redirect('/');
-            } else if ($user->type == 'superAdmin') {
-                return redirect('/superAdmin');
+            } else if ($user->type == 'super_admin') {
+                return redirect('/admin');
+            } else if ($user->type == 'admin_edunix') {
+                return redirect('/admin_edunix');
             }
         } else {
             return redirect('Landing/login')->with('error', 'Invalid credentials');

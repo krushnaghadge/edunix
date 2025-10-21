@@ -5,8 +5,8 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Skydash Admin</title>
-      
+    <title>Edunix Admin</title>
+
     <!-- plugins:css -->
     <link rel="stylesheet" href="Dashboard/vendors/feather/feather.css">
     <link rel="stylesheet" href="Dashboard/vendors/ti-icons/css/themify-icons.css">
@@ -54,12 +54,12 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#"
                             data-toggle="dropdown">
-                            <i class="icon-bell mx-0"></i>
+                            <i class="icon-bell mx-0"> debug</i>
                             <span class="count"></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
                             aria-labelledby="notificationDropdown">
-                            <p class="mb-0 font-weight-normal float-left dropdown-header">Sessions</p>
+                            <p class="mb-0 font-weight-normal float-left dropdown-header">Sessions DETAILS</p>
                             <a class="dropdown-item preview-item">
                                 <div class="preview-thumbnail">
                                     <div class="preview-icon bg-success">
@@ -67,11 +67,11 @@
                                     </div>
                                 </div>
                                 <div class="preview-item-content">
-                                    <h6 class="preview-subject font-weight-normal"> User{{ session('id') }}
+                                    <h6 class="preview-subject font-weight-normal"> UserID{{ session('id') }}
 
-</h6>
+                                    </h6>
                                     <p class="font-weight-light small-text mb-0 text-muted">
-                                       {{ session('type') }}
+                                        {{ session('type') }}
                                     </p>
                                 </div>
                             </a>
@@ -82,7 +82,8 @@
                                     </div>
                                 </div>
                                 <div class="preview-item-content">
-                                    <h6 class="preview-subject font-weight-normal"> Institue{{ session('institute_id') }}</h6>
+                                    <h6 class="preview-subject font-weight-normal">
+                                        InstitueID{{ session('institute_id') }}</h6>
                                     <p class="font-weight-light small-text mb-0 text-muted">
                                         Private message
                                     </p>
@@ -180,7 +181,7 @@
                         </a>
                         <div class="collapse" id="lead-inquiry">
                             <ul class="nav flex-column sub-menu">
-                             
+
                                 <li class="nav-item"><a class="nav-link" href="{{ URL::to('/add-leads') }}">Add
                                         Leads</a></li>
                                 <li class="nav-item"><a class="nav-link" href="{{ URL::to('/leadAssign') }}">Lead
