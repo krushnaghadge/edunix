@@ -7,7 +7,7 @@ use App\Http\Controllers\EnquiryController;
 use App\Http\Controllers\LeadController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
-use App\Http\Controllers\EmployeeController;            
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\SiblingController;
 use App\Http\Controllers\FeesController;
 use App\Http\Controllers\AppUserController;
@@ -15,27 +15,14 @@ use App\Http\Controllers\HomeworkController;
 use App\Http\Controllers\HouseBlockController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\LeaveController;
-use App\Http\Controllers\UserController;        
-
-// Route::get('/', function () {
-//     return view('index');
-// });
-
-
-
-//Admin routes
-
-Route::get('/admin', [AdminController::class, 'index']);
-
-Route::get('/adminProducts', [AdminController::class, 'products']);
-Route::get('/adminProfile', [AdminController::class, 'profile']);
-
-Route::POST('/addNewProduct', [AdminController::class, 'addNewProduct']);
+use App\Http\Controllers\UserController;
 
 
 
 
-//User routes
+// ------------------------
+// Public Routes (No Login Required)
+// ------------------------
 
 Route::get('/', [MainController::class, 'index']);
 // Route::post('/register', [MainController::class,'register']);
@@ -46,14 +33,27 @@ Route::post('/loginUser', [MainController::class, 'loginUser']); // handles logi
 Route::get('/logout', [MainController::class, 'logout']);
 
 
+// ------------------------
+// Protected Dashboard & Admin Routes (Only after Login)
+// ------------------------
 
 
-// Dashboard
-Route::get('/dashboard', [AdminController::class, 'dashboard']);
+
+
+
+
+//Admin routes
+
+// Route::get('/admin', [AdminController::class, 'index']);
+// Route::get('/dashboard', [AdminController::class, 'dashboard']);
+Route::middleware(['isLogin'])->group(function () {
+    Route::get('/admin', [AdminController::class, 'index']);
+    Route::get('/dashboard', [AdminController::class, 'dashboard']);
+});
+
+
 
 // Lead/Inquiry
-
-
 Route::resource('enquiries', EnquiryController::class);
 
 Route::get('/add-leads', [EnquiryController::class, 'create'])->name('enquiries.create');

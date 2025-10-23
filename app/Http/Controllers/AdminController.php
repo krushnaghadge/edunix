@@ -12,8 +12,8 @@ class AdminController extends Controller
 
     public function dashboard()
     {
-        if (session()->get('type') != 'admin') {
-            // return redirect('/login');
+        if (session()->get('type') == 'admin') {
+
             return view('Dashboard.index');
         }
 
@@ -23,10 +23,11 @@ class AdminController extends Controller
 
     public function index()
     {
-        if (session()->get('type') != 'admin') {
-            // return redirect('/login');
+        if (session()->get('type') == 'admin') {
+
             return view('Dashboard.index');
         }
+
 
         return redirect()->back();
     }
