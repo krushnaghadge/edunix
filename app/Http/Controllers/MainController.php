@@ -84,7 +84,7 @@ class MainController extends Controller
             session()->put('id', $user->id);
             session()->put('type', $user->type);
 
-            return redirect('/');
+            return redirect('/admin');
 
             //  return redirect('/');
 

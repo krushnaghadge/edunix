@@ -299,6 +299,33 @@
                         </div>
                     </li>
 
+
+
+                    <!-- Account -->
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#account" aria-expanded="false"
+                            aria-controls="account">
+                            <i class="icon-wallet menu-icon"></i>
+                            <span class="menu-title">Account</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="account">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"><a class="nav-link"
+                                        href="{{ URL::to('/account/expense') }}">Expense</a></li>
+                                <li class="nav-item"><a class="nav-link"
+                                        href="{{ URL::to('/account/income') }}">Income</a></li>
+                                <li class="nav-item"><a class="nav-link"
+                                        href="{{ URL::to('/account/dayBook') }}">Day Book</a></li>
+                                <li class="nav-item"><a class="nav-link"
+                                        href="{{ URL::to('/account/incomeStatement') }}">Income Statement</a></li>
+                                <li class="nav-item"><a class="nav-link"
+                                        href="{{ URL::to('/account/category') }}">Category</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+
                     <!-- Mobile App Users -->
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#mobileAppUser" aria-expanded="false"

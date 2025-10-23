@@ -10,6 +10,8 @@ use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\SiblingController;
 use App\Http\Controllers\FeesController;
+use App\Http\Controllers\AccountController;
+
 use App\Http\Controllers\AppUserController;
 use App\Http\Controllers\HomeworkController;
 use App\Http\Controllers\HouseBlockController;
@@ -99,16 +101,30 @@ Route::get('/teachers/filter/{status}', [TeacherController::class, 'filter'])->n
 // // Sibling
 // Route::get('/allSiblings', [SiblingController::class, 'allSiblings']);
 
-// // Fees
-// Route::get('/collectFees', [FeesController::class, 'collectFees']);
-// Route::get('/feesDefaulters', [FeesController::class, 'feesDefaulters']);
-// Route::get('/collectFeesLags', [FeesController::class, 'collectFeesLags']);
-// Route::get('/feesCollectionReport', [FeesController::class, 'feesCollectionReport']);
-// Route::get('/feesStructureSetup', [FeesController::class, 'feesStructureSetup']);
-// Route::get('/feesStructureReport', [FeesController::class, 'feesStructureReport']);
-// Route::get('/feesCollectionMonthly', [FeesController::class, 'feesCollectionMonthly']);
-// Route::get('/onlineFeesStructure', [FeesController::class, 'onlineFeesStructure']);
+// Fees
+Route::middleware(['isLogin'])->group(function () {
+Route::get('/collectFees', [FeesController::class, 'collectFees']);
+Route::get('/feesDefaulters', [FeesController::class, 'feesDefaulters']);
+Route::get('/collectFeesLags', [FeesController::class, 'collectFeesLags']);
+Route::get('/feesCollectionReport', [FeesController::class, 'feesCollectionReport']);
+Route::get('/feesStructureSetup', [FeesController::class, 'feesStructureSetup']);
+Route::get('/feesStructureReport', [FeesController::class, 'feesStructureReport']);
+Route::get('/feesCollectionMonthly', [FeesController::class, 'feesCollectionMonthly']);
+Route::get('/onlineFeesStructure', [FeesController::class, 'onlineFeesStructure']);
 
+
+
+
+Route::get('/account/expense', [AccountController::class, 'expense']);
+Route::get('/account/income', [AccountController::class, 'income']);
+Route::get('/account/dayBook', [AccountController::class, 'dayBook']);
+Route::get('/account/incomeStatement', [AccountController::class, 'incomeStatement']);
+Route::get('/account/category', [AccountController::class, 'category']);
+
+
+
+});
+Route::get('/account/expense', [AccountController::class, 'expense']);
 // // Mobile App Users
 // Route::get('/mobileAppUsers', [AppUserController::class, 'allUsers']);
 
