@@ -10,7 +10,7 @@ class AdminController extends Controller
 {
 
 
-  public function dashboard()
+    public function dashboard()
     {
         if (session()->get('type') != 'admin') {
             // return redirect('/login');
@@ -34,7 +34,7 @@ class AdminController extends Controller
 
     public function profile()
     {
-         if (session()->get('type') != 'admin') {
+        if (session()->get('type') != 'admin') {
             $user = User::find(session()->get('id'));
             return view('dashboard.profile', compact('user'));
         }

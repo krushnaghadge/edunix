@@ -49,7 +49,7 @@ Route::get('/logout', [MainController::class, 'logout']);
 
 
 // Dashboard
-Route::get('/admin', [AdminController::class, 'dashboard']);
+Route::get('/dashboard', [AdminController::class, 'dashboard']);
 
 // Lead/Inquiry
 

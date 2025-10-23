@@ -73,7 +73,26 @@ class MainController extends Controller
         return view('Landing/login'); // contains form with action="/loginUser"
     }
 
-    public function loginUser(Request $request)
+
+     public function loginUser(Request $request)
+    {
+        $user = User::where('email', $request->input('email'))
+            ->where('password', $request->input('password'))
+            ->first();
+
+        if ($user) {
+            session()->put('id', $user->id);
+            session()->put('type', $user->type);
+
+            return redirect('/');
+
+            //  return redirect('/');
+
+        }
+
+        return redirect('/login')->with('error', 'Invalid credentials');
+    }
+    public function loginUser1(Request $request)
     {
         $user = User::where('email', $request->input('email'))
             ->where('password', $request->input('password'))
@@ -83,11 +102,11 @@ class MainController extends Controller
             session()->put('id', $user->id);
             session()->put('type', $user->type);
             session()->put('role', $user->type);
-            $institution = Institution::where('user_id', $user->id)->first();
+            // $institution = Institution::where('user_id', $user->id)->first();
 
-            if ($institution) {
-                session()->put('institute_id', $institution->id);
-            }
+            // if ($institution) {
+            //     session()->put('institute_id', $institution->id);
+            // }
             // dd(session()->all());
 
             if ($user->type == 'admin') {
